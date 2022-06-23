@@ -85,6 +85,6 @@ alert( randomInteger(1, 5) ); // 5
 */
 
 function randomInteger(min, max) {
-    let randomNumber = min + Math.random() * ( max - min );
+    let randomNumber = min - 0.5 + Math.random() * ( max - min + 1 );
     return randomNumber.Math.round();
 };
