@@ -24,7 +24,8 @@ checkSpam("innocent rabbit") == false
 */
 
 function checkSpam(str) {
-    return (str.toLowerCase().includes(`xxx`) || str.toLowerCase().includes(`viagra`));
+    str = str.toLowerCase();
+    return (str.includes(`xxx`) || str.includes(`viagra`));
 };
 
 /*
