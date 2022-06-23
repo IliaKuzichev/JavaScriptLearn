@@ -45,3 +45,46 @@ function readNumber() {
         };
     };
 };
+/*
+Этот цикл – бесконечный. Он никогда не завершится, почему?
+
+let i = 0;
+while (i != 10) {
+  i += 0.2;
+};
+*/
+// Происходит потеря точности при вычислении дроби 1/5, значение в i=10 перескакивается
+
+/*
+Встроенный метод Math.random() возвращает случайное число от 0 (включительно) до 1 (но не включая 1)
+
+Напишите функцию random(min, max), которая генерирует случайное число с плавающей точкой от min до max (но не включая max).
+
+Пример работы функции:
+
+alert( random(1, 5) ); // 1.2345623452
+alert( random(1, 5) ); // 3.7894332423
+alert( random(1, 5) ); // 4.3435234525
+*/
+
+function random(min, max) {
+    let randomNumber = min + Math.random() * ( max - min );
+    return randomNumber.toFixed(10);
+};
+
+/*
+Напишите функцию randomInteger(min, max), которая генерирует случайное целое (integer) число от min до max (включительно).
+
+Любое число из интервала min..max должно появляться с одинаковой вероятностью.
+
+Пример работы функции:
+
+alert( randomInteger(1, 5) ); // 1
+alert( randomInteger(1, 5) ); // 3
+alert( randomInteger(1, 5) ); // 5
+*/
+
+function randomInteger(min, max) {
+    let randomNumber = min + Math.random() * ( max - min );
+    return randomNumber.Math.round();
+};
