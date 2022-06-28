@@ -36,7 +36,7 @@ styles.push(`Рок-н-ролл`);
 
 styles[Math.floor((styles.length - 1) / 2)] = `Классика`;
 
-alert( styles.shift() );
+alert(styles.shift());
 
 styles.unshift(`Рэп`, `Регги`);
 
@@ -54,3 +54,28 @@ arr[2](); // ?
 
 //Ответ: arr , к массиву как к объекту добавляется свойство в конце являющееся функией.
 //this возвращает ссылку на свой объект
+
+/*
+Напишите функцию sumInput(), которая:
+
+Просит пользователя ввести значения, используя prompt и сохраняет их в массив.
+Заканчивает запрашивать значения, когда пользователь введёт не числовое значение, пустую строку или нажмёт «Отмена».
+Подсчитывает и возвращает сумму элементов массива.
+P.S. Ноль 0 – считается числом, не останавливайте ввод значений при вводе «0».
+*/
+function sumInput() {
+    let sumArray = [];
+    let sum = 0;
+    let inputValue = prompt("Введите число", 0);
+
+    while (true) {
+        if (inputValue == null || inputValue == `` || !isFinite(inputValue)) {
+            break;
+        };
+        sum += +inputValue;
+        sumArray.push(+inputValue);
+        inputValue = prompt("Введите число", 0);
+    };
+    return sum;
+};
+alert(sumInput());
