@@ -89,7 +89,7 @@ alert(sumInput());
 
 Например:
 
-getMaxSubSum([-1, 2, 3, -9]) == 5 (сумма выделенных элементов)
+getMaxSubSum([-1, 2, 3, -9]) == 5 
 getMaxSubSum([2, -1, 2, 3, -9]) == 6
 getMaxSubSum([-1, 2, 3, -9, 11]) == 11
 getMaxSubSum([-2, -1, 1, 2]) == 3
@@ -102,7 +102,14 @@ getMaxSubSum([-1, -2, -3]) = 0
 */
 
 function getMaxSubSum(arr) {
-    let sum = 0;
-    
-    return sum;
-};
+    let maxSum = 0;
+    partialSum = 0;
+
+    for (let item of arr) {                    // Для каждого элемента массива
+        partialSum += item;                    // Запоминаем значение
+        maxSum = Math.max(maxSum, partialSum); // Проверка и присваивание на предмет максимального значения
+        if (patrialSum < 0) patrialSum = 0;    //Если значение меньше 0 присваиваем 0.
+    };
+
+    return maxSum;
+}; //Решение копипаста с сайта учебника, но вроде разобрался как оно работает, если что будет шпоргалкой.)
