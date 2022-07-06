@@ -16,13 +16,13 @@ function camelize(str) {
     let finalStr;           //Наглядное обьявление переменных только для данного блока кода
     let arrayStr = str.split('-'); // -//-
 
-        finalStr = arrayStr.map(function ucFirst(word, index) {
-            if (index == 0) {               // Если 
-                return word;
-            } else {
-                return word[0].toUpperCase() + word.slice(1);
-            };
-        });
+    finalStr = arrayStr.map(function ucFirst(word, index) {
+        if (index == 0) {               // Если 
+            return word;
+        } else {
+            return word[0].toUpperCase() + word.slice(1);
+        };
+    });
 
     return finalStr.join('');
 };
@@ -52,23 +52,28 @@ alert( arr ); // 5,3,8,1 (без изменений)
 */
 //Вариант 1
 function filterRange(arr, a, b) {
-  let filtered = [];
+    let filtered = [];
 
-  arr.forEach(element => {
-    if ( element >= a && element <= b) {
-        filtered.push(element)
-    }
-  });
+    arr.forEach(element => {
+        if (element >= a && element <= b) {
+            filtered.push(element)
+        }
+    });
 
-  return filtered;
+    return filtered;
 };
 // Вариант 2
 function filterRange(arr, a, b) {
     let filtered = [];
-  
-    arr.forEach(element => (element >= a && element <= b) ?  filtered.push(element) : 0 );
-  
+
+    arr.forEach(element => (element >= a && element <= b) ? filtered.push(element) : 0);
+
     return filtered;
-  };
+};
+
+//Вариант 3
+function filterRange(arr, a, b) {
+    return arr.filter(element => (element >= a && element <= b));
+};
 
 // Какой вариант предпочтительнее?)
