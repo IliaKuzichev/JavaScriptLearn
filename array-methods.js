@@ -33,3 +33,42 @@ function camelize(str) {
     if (!str) return str; //Проверка на пустое входящее значение
     return str.split(`-`).map((word, index) => index == 0 ? word : word[0].toUpperCase() + word.slice(1)).join(``);
 };
+
+
+/*
+Напишите функцию filterRange(arr, a, b), которая принимает массив arr, ищет в нём элементы между a и b и отдаёт массив этих элементов.
+
+Функция должна возвращать новый массив и не изменять исходный.
+
+Например:
+
+let arr = [5, 3, 8, 1];
+
+let filtered = filterRange(arr, 1, 4);
+
+alert( filtered ); // 3,1 (совпадающие значения)
+
+alert( arr ); // 5,3,8,1 (без изменений)
+*/
+//Вариант 1
+function filterRange(arr, a, b) {
+  let filtered = [];
+
+  arr.forEach(element => {
+    if ( element >= a && element <= b) {
+        filtered.push(element)
+    }
+  });
+
+  return filtered;
+};
+// Вариант 2
+function filterRange(arr, a, b) {
+    let filtered = [];
+  
+    arr.forEach(element => (element >= a && element <= b) ?  filtered.push(element) : 0 );
+  
+    return filtered;
+  };
+
+// Какой вариант предпочтительнее?)
