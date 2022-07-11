@@ -95,7 +95,7 @@ function filterRangeInPlace(arr, a, b) {
         if (item < a || item > b) {
             arr.splice(index, 1)
         };
-     });
+    });
 };
 
 /* 4
@@ -106,7 +106,7 @@ let arr = [5, 2, 1, -10, 8];
 
 alert( arr ); // 8, 5, 2, 1, -10
 */
-arr.sort( (a, b) => a - b ).reverse();
+arr.sort((a, b) => a - b).reverse();
 
 /* 5
 Скопировать и отсортировать массив
@@ -125,7 +125,7 @@ alert( arr ); // HTML, JavaScript, CSS (без изменений)
 function copySorted(arr) {
     let sorted = [];
     sorted.concat(arr);
-  return sorted.sort();  
+    return sorted.sort();
 };
 
 /* 6
