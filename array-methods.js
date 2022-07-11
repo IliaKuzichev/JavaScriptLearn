@@ -95,7 +95,7 @@ function filterRangeInPlace(arr, a, b) {
         if (item < a || item > b) {
             arr.splice(index, 1)
         };
-     });
+    });
 };
 
 /* 4
@@ -106,7 +106,7 @@ let arr = [5, 2, 1, -10, 8];
 
 alert( arr ); // 8, 5, 2, 1, -10
 */
-arr.sort( (a, b) => a - b ).reverse();
+arr.sort((a, b) => a - b).reverse();
 
 /* 5
 Скопировать и отсортировать массив
@@ -125,7 +125,7 @@ alert( arr ); // HTML, JavaScript, CSS (без изменений)
 function copySorted(arr) {
     let sorted = [];
     sorted.concat(arr);
-  return sorted.sort();  
+    return sorted.sort();
 };
 
 /* 6
@@ -134,14 +134,16 @@ function copySorted(arr) {
 
 Задание состоит из двух частей.
 
-Во-первых, реализуйте метод calculate(str), который принимает строку типа "1 + 2" в формате «ЧИСЛО оператор ЧИСЛО» (разделено пробелами) и возвращает результат. Метод должен понимать плюс + и минус -.
+Во-первых, реализуйте метод calculate(str), который принимает строку типа "1 + 2" 
+в формате «ЧИСЛО оператор ЧИСЛО» (разделено пробелами) и возвращает результат. Метод должен понимать плюс + и минус -.
 
 Пример использования:
 
 let calc = new Calculator;
 
 alert( calc.calculate("3 + 7") ); // 10
-Затем добавьте метод addMethod(name, func), который добавляет в калькулятор новые операции. Он принимает оператор name и функцию с двумя аргументами func(a,b), которая описывает его.
+Затем добавьте метод addMethod(name, func), который добавляет в калькулятор новые операции.
+Он принимает оператор name и функцию с двумя аргументами func(a,b), которая описывает его.
 
 Например, давайте добавим умножение *, деление / и возведение в степень **:
 
@@ -156,3 +158,27 @@ alert( result ); // 8
 Числа и оператор разделены ровно одним пробелом.
 Не лишним будет добавить обработку ошибок.
 */
+
+function Calculator(str) {
+    this.calculate = function (str) {
+
+        let inputStr = str.split(` `);
+
+        if (inputStr[1] == `+`) {
+            return +inputStr[0] + +inputStr[2];
+        } else {
+            return +inputStr[0] - +inputStr[2];
+        };
+    };
+
+    this.addMethod = function (name, func) {
+        if (this.name == `*`) {
+          return this.a * this.b;
+        } if (this.name == `/`) {
+            return this.a / this.b;
+        } else {
+            return this.a ** this.b;
+        }
+    };
+
+};
