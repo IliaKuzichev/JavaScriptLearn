@@ -158,21 +158,22 @@ alert( result ); // 8
 Числа и оператор разделены ровно одним пробелом.
 Не лишним будет добавить обработку ошибок.
 */
+
 function Calculator(str) {
 
     this.actions = {
         '+': (a, b) => a + b,
         '-': (a, b) => a - b,
-    };
+    };// Методы которые калькулятор способен выполнять изначально
 
     this.addMethod = function (name, func) {
-        this.actions[name] = func;
+        this.actions[name] = func; // Добавление новых методов в существующий объект калькулятора
     };
 
     this.calculate = function (str) {
-        let inputStr = str.split(` `)
-        let op = inputStr[1]
-        return this.actions[op](+inputStr[0], +inputStr[2])
+        let inputStr = str.split(` `);  //Деление входящей строки на массив
+        let op = inputStr[1];  //Выделение из массива оператора
+        return this.actions[op](+inputStr[0], +inputStr[2]);  // Выполнение this(Текущий обьект калькулятора).егоМетод[подходящий ключ\имя оператора](Входящие числовые значения)
     };
 };
 
@@ -249,7 +250,7 @@ alert(arr[0].name); // Вася
 alert(arr[1].name); // Маша
 alert(arr[2].name); // Петя
 */
-function sortByAge(users) {
+function sortByAge(users) { 
     users.sort(function (userA, userB) { return userA.age - userB.age; });
 };
 
