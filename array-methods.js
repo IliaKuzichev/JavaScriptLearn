@@ -165,15 +165,20 @@ function Calculator(str) {
         '+': (a, b) => a + b,
         '-': (a, b) => a - b,
     };// Методы которые калькулятор способен выполнять изначально
-
+    
     this.addMethod = function (name, func) {
         this.actions[name] = func; // Добавление новых методов в существующий объект калькулятора
     };
 
     this.calculate = function (str) {
         let inputStr = str.split(` `);  //Деление входящей строки на массив
+        let a = +inputStr[0];
         let op = inputStr[1];  //Выделение из массива оператора
-        return this.actions[op](+inputStr[0], +inputStr[2]);  // Выполнение this(Текущий обьект калькулятора).егоМетод[подходящий ключ\имя оператора](Входящие числовые значения)
+        let b = +inputStr[2];
+        if (!this.methods[op] || isNaN(a) || isNaN(b)) {
+            return NaN;
+        };
+        return this.actions[op](a, b);  // Выполнение this(Текущий обьект калькулятора).егоМетод[подходящий ключ\имя оператора](Входящие числовые значения)
     };
 };
 
