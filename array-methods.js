@@ -158,31 +158,24 @@ alert( result ); // 8
 Числа и оператор разделены ровно одним пробелом.
 Не лишним будет добавить обработку ошибок.
 */
-
 function Calculator(str) {
+
+    this.actions = {
+        '+': (a, b) => a + b,
+        '-': (a, b) => a - b,
+    };
+
     this.addMethod = function (name, func) {
-        let newAction = new Object();
-        this.newAction[name] = func;
-    },
+        this.actions[name] = func;
+    };
+
     this.calculate = function (str) {
-
-        let inputStr = str.split(` `);
-        switch (inputStr[1]) {
-
-            case `+`:
-                return +inputStr[0] + +inputStr[2];
-
-            case `-`:
-                return +inputStr[0] - +inputStr[2];
-
-            case newAction.find(name):
-                return newAction[newAction.find(name) + 1];
-
-            default:
-                break;
-        };
+        let inputStr = str.split(` `)
+        let op = inputStr[1]
+        return this.actions[op](+inputStr[0], +inputStr[2])
     };
 };
+
 
 /* 7
 Трансформировать в массив имён
@@ -234,8 +227,8 @@ alert( usersMapped[0].fullName ) // Вася Пупкин
 
 let usersMapped = users.map(user => ({
     fullName: user.name + ` ` + user.surname,
-    id: user.id 
-    }));
+    id: user.id
+}));
 
 /* 9
 Отсортировать пользователей по возрасту
@@ -257,7 +250,7 @@ alert(arr[1].name); // Маша
 alert(arr[2].name); // Петя
 */
 function sortByAge(users) {
-    users.sort(function(userA, userB) { return userA.age - userB.age; });
+    users.sort(function (userA, userB) { return userA.age - userB.age; });
 };
 
 /* 10
@@ -283,6 +276,6 @@ shuffle(arr);
 
 function shuffle(array) {
     array.sort(function nearRandom(params) {
-        
+
     });
 };
