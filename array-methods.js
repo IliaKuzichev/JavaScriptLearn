@@ -160,25 +160,129 @@ alert( result ); // 8
 */
 
 function Calculator(str) {
+    this.addMethod = function (name, func) {
+        let newAction = new Object();
+        this.newAction[name] = func;
+    },
     this.calculate = function (str) {
 
         let inputStr = str.split(` `);
+        switch (inputStr[1]) {
 
-        if (inputStr[1] == `+`) {
-            return +inputStr[0] + +inputStr[2];
-        } else {
-            return +inputStr[0] - +inputStr[2];
+            case `+`:
+                return +inputStr[0] + +inputStr[2];
+
+            case `-`:
+                return +inputStr[0] - +inputStr[2];
+
+            case newAction.find(name):
+                return newAction[newAction.find(name) + 1];
+
+            default:
+                break;
         };
     };
+};
 
-    this.addMethod = function (name, func) {
-        if (this.name == `*`) {
-          return this.a * this.b;
-        } if (this.name == `/`) {
-            return this.a / this.b;
-        } else {
-            return this.a ** this.b;
-        }
-    };
+/* 7
+Трансформировать в массив имён
+У вас есть массив объектов user, и в каждом из них есть user.name. Напишите код, который преобразует их в массив имён.
 
+Например:
+
+let vasya = { name: "Вася", age: 25 };
+let petya = { name: "Петя", age: 30 };
+let masha = { name: "Маша", age: 28 };
+
+let users = [ vasya, petya, masha ];
+
+let names =  ... ваш код 
+
+alert( names ); // Вася, Петя, Маша
+*/
+
+let names = users.map(item => item.name);
+
+/* 8
+Трансформировать в объекты
+У вас есть массив объектов user, и у каждого из объектов есть name, surname и id.
+
+Напишите код, который создаст ещё один массив объектов с параметрами id и fullName, где fullName – состоит из name и surname.
+
+Например:
+
+let vasya = { name: "Вася", surname: "Пупкин", id: 1 };
+let petya = { name: "Петя", surname: "Иванов", id: 2 };
+let masha = { name: "Маша", surname: "Петрова", id: 3 };
+
+let users = [ vasya, petya, masha ];
+
+let usersMapped =  ... ваш код ... 
+
+
+usersMapped = [
+  { fullName: "Вася Пупкин", id: 1 },
+  { fullName: "Петя Иванов", id: 2 },
+  { fullName: "Маша Петрова", id: 3 }
+]
+
+
+alert( usersMapped[0].id ) // 1
+alert( usersMapped[0].fullName ) // Вася Пупкин
+Итак, на самом деле вам нужно трансформировать один массив объектов в другой. Попробуйте использовать =>. Это небольшая уловка.
+*/
+
+let usersMapped = users.map(user => ({
+    fullName: user.name + ` ` + user.surname,
+    id: user.id 
+    }));
+
+/* 9
+Отсортировать пользователей по возрасту
+Напишите функцию sortByAge(users), которая принимает массив объектов со свойством age и сортирует их по нему.
+
+Например:
+
+let vasya = { name: "Вася", age: 25 };
+let petya = { name: "Петя", age: 30 };
+let masha = { name: "Маша", age: 28 };
+
+let arr = [ vasya, petya, masha ];
+
+sortByAge(arr);
+
+// теперь: [vasya, masha, petya]
+alert(arr[0].name); // Вася
+alert(arr[1].name); // Маша
+alert(arr[2].name); // Петя
+*/
+function sortByAge(users) {
+    users.sort(function(userA, userB) { return userA.age - userB.age; });
+};
+
+/* 10
+Перемешайте массив
+Напишите функцию shuffle(array), которая перемешивает (переупорядочивает случайным образом) элементы массива.
+
+Многократные прогоны через shuffle могут привести к разным последовательностям элементов. Например:
+
+let arr = [1, 2, 3];
+
+shuffle(arr);
+// arr = [3, 2, 1]
+
+shuffle(arr);
+// arr = [2, 1, 3]
+
+shuffle(arr);
+// arr = [3, 1, 2]
+// ...
+Все последовательности элементов должны иметь одинаковую вероятность. Например, [1,2,3] может быть 
+переупорядочено как [1,2,3] или [1,3,2], или [3,1,2] и т.д., с равной вероятностью каждого случая.
+*/
+
+function shuffle(array) {
+    array.sort(function nearRandom(params) {
+        
+    });
 };
