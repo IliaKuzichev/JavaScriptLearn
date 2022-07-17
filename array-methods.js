@@ -165,7 +165,7 @@ function Calculator(str) {
         '+': (a, b) => a + b,
         '-': (a, b) => a - b,
     };// Методы которые калькулятор способен выполнять изначально
-    
+
     this.addMethod = function (name, func) {
         this.actions[name] = func; // Добавление новых методов в существующий объект калькулятора
     };
@@ -255,7 +255,7 @@ alert(arr[0].name); // Вася
 alert(arr[1].name); // Маша
 alert(arr[2].name); // Петя
 */
-function sortByAge(users) { 
+function sortByAge(users) {
     users.sort(function (userA, userB) { return userA.age - userB.age; });
 };
 
@@ -280,8 +280,66 @@ shuffle(arr);
 переупорядочено как [1,2,3] или [1,3,2], или [3,1,2] и т.д., с равной вероятностью каждого случая.
 */
 
-function shuffle(array) {
-    array.sort(function nearRandom(params) {
 
+function shuffle(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        let j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    };
+};  //Решение взято с сайта с задачами, ибо фантазии хватало только на вариант с не равным колличеством исходов
+
+function shuffle(array) {
+    array.sort(function nearRandom() {
+        Math.random() - 0.5;
     });
+};
+
+/* 11
+Получить средний возраст
+Напишите функцию getAverageAge(users), которая принимает массив объектов со свойством age и возвращает средний возраст.
+
+Формула вычисления среднего арифметического значения: (age1 + age2 + ... + ageN) / N.
+
+Например:
+
+let vasya = { name: "Вася", age: 25 };
+let petya = { name: "Петя", age: 30 };
+let masha = { name: "Маша", age: 29 };
+
+let arr = [ vasya, petya, masha ];
+
+alert( getAverageAge(arr) ); // (25 + 30 + 29) / 3 = 28
+*/
+
+function getAverageAge(users) {
+    return users.reduce((averageAge, user) => averageAge + user.age, 0) / users.length;
+};
+
+/* 12
+Оставить уникальные элементы массива
+Пусть arr – массив строк.
+
+Напишите функцию unique(arr), которая возвращает массив, содержащий только уникальные элементы arr.
+
+Например:
+
+function unique(arr) {
+   ваш код 
+}
+
+let strings = ["кришна", "кришна", "харе", "харе",
+  "харе", "харе", "кришна", "кришна", ":-O"
+];
+
+alert( unique(strings) ); // кришна, харе, :-O
+*/
+
+function unique(arr) {
+    let sortArr;
+    sortArr.concat(arr).forEach(function sort(item, index) {
+        if (sortArr[index] == sortArr[sortArr.indexOf(item, index + 1)]) {
+            sortArr.splice(index, 1)
+        };
+    });
+    return sortArr;
 };
