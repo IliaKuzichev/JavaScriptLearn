@@ -335,11 +335,19 @@ alert( unique(strings) ); // кришна, харе, :-O
 */
 
 function unique(arr) {
-    let sortArr;
+    let sortArr = [];
+
+    for (let item of arr) {
+        if (!sortArr.includes(item)) {
+            sortArr.push(item);
+        };
+    };
+    return sortArr;
+};
+/*   
     sortArr.concat(arr).forEach(function sort(item, index) {
         if (sortArr[index] == sortArr[sortArr.indexOf(item, index + 1)]) {
             sortArr.splice(index, 1)
         };
     });
-    return sortArr;
-};
+*/
