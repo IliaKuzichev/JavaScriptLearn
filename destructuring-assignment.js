@@ -1,4 +1,4 @@
-/*
+/* 1
 Деструктурирующее присваивание
 У нас есть объект:
 
@@ -24,3 +24,36 @@ alert( isAdmin ); // false
 */
 
 let {name, years: age, isAdmin = false} = user;
+
+/*
+Максимальная зарплата
+У нас есть объект salaries с зарплатами:
+
+let salaries = {
+  "John": 100,
+  "Pete": 300,
+  "Mary": 250
+};
+Создайте функцию topSalary(salaries), которая возвращает имя самого высокооплачиваемого сотрудника.
+
+Если объект salaries пустой, то нужно вернуть null.
+Если несколько высокооплачиваемых сотрудников, можно вернуть любого из них.
+P.S. Используйте Object.entries и деструктурирование, чтобы перебрать пары ключ/значение.
+*/
+let salaries = {
+  "John": 100,
+  "Pete": 300,
+  "Mary": 250
+};
+
+
+function topSalary(salaries) {
+  
+  let topSalary = Object.entries(salaries);
+  for (let salary of topSalary) {
+    
+  };
+  console.log(topSalary);
+  topSalary.sort((a, b) => a - b);
+  return topSalary[0];
+};
