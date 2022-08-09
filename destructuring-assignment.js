@@ -23,9 +23,9 @@ alert( age ); // 30
 alert( isAdmin ); // false
 */
 
-let {name, years: age, isAdmin = false} = user;
+let { name, years: age, isAdmin = false } = user;
 
-/*
+/* 2
 Максимальная зарплата
 У нас есть объект salaries с зарплатами:
 
@@ -48,12 +48,16 @@ let salaries = {
 
 
 function topSalary(salaries) {
-  
-  let topSalary = Object.entries(salaries);
-  for (let salary of topSalary) {
-    
-  };
-  console.log(topSalary);
-  topSalary.sort((a, b) => a - b);
-  return topSalary[0];
+    let topSalary = null;
+    let topSalaryName = null;
+    let topSalarys = Object.entries(salaries);
+
+    for (let [name, salary] of topSalarys) {
+      if (salary >= topSalary) {
+        topSalaryName = name;
+        topSalary = salary;
+      };
+    };
+
+    return topSalaryName;
 };
