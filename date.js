@@ -82,5 +82,7 @@ P.S. Функция не должна изменять переданный ей
 */
 
 function getDateAgo(date, days) {
-    
+  let dateAgo = new Date(0);
+  dateAgo.setMilliseconds(date.getTime() - (days * 24 * 3600 * 1000));
+    return dateAgo.getDate();
 };
