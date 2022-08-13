@@ -86,3 +86,21 @@ function getDateAgo(date, days) {
   dateAgo.setMilliseconds(date.getTime() - (days * 24 * 3600 * 1000));
     return dateAgo.getDate();
 };
+
+/* 5
+Последнее число месяца?
+Напишите функцию getLastDayOfMonth(year, month), возвращающую последнее число месяца. Иногда это 30, 31 или даже февральские 28/29.
+
+Параметры:
+
+year – год из четырёх цифр, например, 2012.
+month – месяц от 0 до 11.
+К примеру, getLastDayOfMonth(2012, 1) = 29 (високосный год, февраль).
+*/
+
+function getLastDayOfMonth(year, month) {
+    let monthPlusOne = new Date(year, month + 1);
+    let lastDayOfMonth = new Date(0);
+    lastDayOfMonth.setMilliseconds(monthPlusOne.getTime() - 24 * 3600 * 1000);
+    return lastDayOfMonth.getDate();
+};
