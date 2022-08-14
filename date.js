@@ -82,8 +82,8 @@ P.S. Функция не должна изменять переданный ей
 */
 
 function getDateAgo(date, days) {
-  let dateAgo = new Date(0);
-  dateAgo.setMilliseconds(date.getTime() - (days * 24 * 3600 * 1000));
+    let dateAgo = new Date(0);
+    dateAgo.setMilliseconds(date.getTime() - (days * 24 * 3600 * 1000));
     return dateAgo.getDate();
 };
 
@@ -131,8 +131,8 @@ P.S. Функция должна работать в любой день, т.е.
 */
 
 function getSecondsToTomorrow() {
-  let today = new Date();
-  let tomorrow = new Date(today.getFullYear(), today.getMonth(), today.getDate() + 1);
+    let today = new Date();
+    let tomorrow = new Date(today.getFullYear(), today.getMonth(), today.getDate() + 1);
     return Math.round((tomorrow.getTime() - today.getTime()) / 1000);
 };
 
@@ -167,6 +167,6 @@ function formatDate(date) {
         return (`${Math.round((+now - +date) / (60 * 1000))} мин. назад`);
     } else {
         let year = date.getFullYear().toString(10).slice(-2);
-        return `${date.getDate()}:${date.getMonth() + 1}:${year} ${date.getHours}:${date.getMinutes}`;
+        return `0${date.getDate()}.0${date.getMonth() + 1}.${year} ${date.getHours()}:${date.getMinutes()}`;
     };
 };
