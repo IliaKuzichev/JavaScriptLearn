@@ -158,7 +158,6 @@ function printList(list) {
 
 Сделайте два решения: с использованием цикла и через рекурсию.
 */
-
 //1)
 function printList(list) {
 
