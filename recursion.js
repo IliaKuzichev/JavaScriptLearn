@@ -27,7 +27,7 @@ P.P.S. Можно ли при помощи рекурсии посчитать s
 //1)
 function sumTo(n) {
   let result = 0;
-    for (let i = 1; i <= n; i++) {
+  for (let i = 1; i <= n; i++) {
     result += i;
   };
   return result;
@@ -35,12 +35,12 @@ function sumTo(n) {
 
 //2)
 function sumTo(n) {
-  return (n * (n + 1)) / 2;  
+  return (n * (n + 1)) / 2;
 };
 
 //3)  
 function sumTo(n) {
-  return (n == 1) ? n : (n + sumTo(n - 1));  
+  return (n == 1) ? n : (n + sumTo(n - 1));
 };
 
 /* 2
@@ -65,8 +65,8 @@ P.S. Подсказка: n! можно записать как n * (n-1)! Нап
 */
 
 function factorial(n) {
-    return (n == 1) ? n : (n * factorial(n - 1));  
-  };
+  return (n == 1) ? n : (n * factorial(n - 1));
+};
 
 /* 3
 Числа Фибоначчи
@@ -94,7 +94,7 @@ function fib(n) {
   for (let i = 3; i < n; i++) {
     let fibN = a + b;
     a = b;
-    b = fibN;    
+    b = fibN;
   };
   return b;
 };
@@ -124,12 +124,30 @@ let list = {
 */
 //1)
 function printList(list) {
+  let start = new Date();
+
+  let tmp = list;
   
-  
+  while (tmp) {
+    alert(tmp.value);
+    tmp = tmp.next;
+  }
+
+  let end = new Date();
+  alert(`bench: ${end - start}`);
 };
 
 //2)
 function printList(list) {
-  
-  
+  let start = new Date();
+
+  alert(list.value);
+
+  if (list.next) {
+    printList(list.next);
+  };
+
+  let end = new Date();
+  alert(`bench: ${end - start}`);
+  return;
 };
