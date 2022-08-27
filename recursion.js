@@ -127,7 +127,7 @@ function printList(list) {
   let start = new Date();
 
   let tmp = list;
-  
+
   while (tmp) {
     alert(tmp.value);
     tmp = tmp.next;
@@ -147,6 +147,44 @@ function printList(list) {
     printList(list.next);
   };
 
+  let end = new Date();
+  alert(`bench: ${end - start}`);
+  return;
+};
+
+/* 5
+Вывод односвязного списка в обратном порядке
+Выведите односвязный список из предыдущего задания Вывод односвязного списка в обратном порядке.
+
+Сделайте два решения: с использованием цикла и через рекурсию.
+*/
+
+//1)
+function printList(list) {
+
+let arr = [];
+let tmp = list;
+
+ while (tmp) {
+  arr.push(tmp.value);
+  tmp = tmp.next;
+ };
+
+ for (let i = arr.length; i >= 0; i--) {
+  alert( arr[i] );  
+ };
+};
+
+//2)
+function printList(list) {
+  let start = new Date();
+
+  if (list.next) {
+    printList(list.next);
+  };
+
+  alert(list.value);
+  
   let end = new Date();
   alert(`bench: ${end - start}`);
   return;
