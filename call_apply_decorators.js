@@ -23,11 +23,11 @@ P.S.: Этот декоратор иногда полезен для юнит-т
 
 function spy(func) {
     
-  function wrapper(args) {
+  function wrapper(...args) {
 
     wrapper.calls.push(args);
 
-    return func.apply(this, ...args);
+    return func.apply(this, args);
   };
 
     wrapper.calls = [];
