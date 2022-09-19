@@ -156,6 +156,33 @@ P.S. Аргументы и контекст this, переданные в f1000,
 */
 
 function throttle(f, ms) {
-  
-  
+  let isThrottle = false;
+  let savedThis;
+  let savedArgs;
+
+  function wrapper() {
+    if (isThrottle) {
+      savedThis = this;
+      savedArgs = arguments;
+      return;
+    };
+    //Место для запоминания входящих данных для следующего выполнения
+
+    f.apply(this, arguments);   
+    // Первый запуск с входящими this и arguments 
+
+    isThrottle = true;          
+    //Включение необходимости запоминания перед следующим выполнением в случае запроса раньше прошествия ms
+
+    setTimeout(function () {
+      isThrottle = false; // Сброс необходимости запоминания
+      if (savedArgs) {
+        wrapper.apply(savedThis, savedArgs);  // Запрос на выполнение обертки с сохраненными данными
+        savedThis = savedArgs = null;  
+      }
+    }, ms);
+  };
+  return wrapper;
 };
+
+//Прочитать что делает код вроде могу а вот самому такую штуку придумать пока сложно.
