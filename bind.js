@@ -64,3 +64,39 @@ console.log( bound.test );
 Ответ получен методом прогона через console.log( bound.test ); 
 результатом bind является другой объект у него уже нет собственного свойства test
 */
+
+/* 4
+Исправьте функцию, теряющую "this"
+Вызов askPassword() в приведённом ниже коде должен проверить пароль и затем вызвать 
+user.loginOk/loginFail в зависимости от ответа.
+
+Однако, его вызов приводит к ошибке. Почему?
+
+Исправьте выделенную строку, чтобы всё работало (других строк изменять не надо).
+
+function askPassword(ok, fail) {
+  let password = prompt("Password?", '');
+  if (password == "rockstar") ok();
+  else fail();
+}
+
+let user = {
+  name: 'Вася',
+
+  loginOk() {
+    alert(`${this.name} logged in`);
+  },
+
+  loginFail() {
+    alert(`${this.name} failed to log in`);
+  },
+
+};
+
+askPassword(user.loginOk, user.loginFail);                         !Выделенная строка!
+*/
+
+/*
+В последней строке при вызове методов объекта user в качестве аргументов функции askPassword() происходит потеря this,
+необходима привязка в виде askPassword(user.loginOk.bind(user), user.loginFail.bind(user));
+*/
