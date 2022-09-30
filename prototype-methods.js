@@ -27,9 +27,12 @@ alert(dictionary); // "apple,__proto__"
 
 let dictionary = Object.create(null);
 
-dictionary.toString = Object.prototype.toString;
-// ваш код, который добавляет метод dictionary.toString
+// ваш код, который добавляет метод dictionary.toString :
 
+dictionary.toString = Object.prototype.toString; 
+// Почему самый лаконичный вариант не работает?)
+
+//1) Вариант который я придумал
 Object.defineProperty(dictionary, "toString", {
     value() {
         return Object.keys(this).join()
@@ -39,7 +42,8 @@ Object.defineProperty(dictionary, "toString", {
     enumerable: false,
     configurable: true
 });
-/*
+
+/* 2) Вариант прилдуманный автором учебника, разница в configurable, здесь он будет false
 let dictionary = Object.create(null, {
     toString: {
         value() {
@@ -48,13 +52,11 @@ let dictionary = Object.create(null, {
     }
 });
 */
+
 // добавляем немного данных
 dictionary.apple = "Apple";
 dictionary.__proto__ = "test"; // здесь __proto__ -- это обычный ключ
 
-//let descriptor = Object.getOwnPropertyDescriptor(dictionary, 'toString');
-
-//alert( JSON.stringify(descriptor, null, 2 ) );
 
 // только apple и __proto__ выведены в цикле
 for (let key in dictionary) {
@@ -84,3 +86,8 @@ Rabbit.prototype.sayHi();
 Object.getPrototypeOf(rabbit).sayHi();
 rabbit.__proto__.sayHi();
 */
+
+rabbit.sayHi();                             //this == rabbit, в объекте rabbit имеется свойство name, результат Rabbit
+Rabbit.prototype.sayHi();                   //this == Rabbit.prototype, в этом объекте нет свойства name результат undefiend 
+Object.getPrototypeOf(rabbit).sayHi();      //this == Rabbit.prototype, в этом объекте нет свойства name результат undefiend
+rabbit.__proto__.sayHi();                   //this == Rabbit.prototype, в этом объекте нет свойства name результат undefiend 
