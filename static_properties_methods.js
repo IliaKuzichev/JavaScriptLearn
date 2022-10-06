@@ -1,6 +1,7 @@
 /*
 Класс расширяет объект?
-Как мы уже знаем, все объекты наследуют от Object.prototype и имеют доступ к «общим» методам объекта, например hasOwnProperty.
+Как мы уже знаем, все объекты наследуют от Object.prototype
+ и имеют доступ к «общим» методам объекта, например hasOwnProperty.
 
 Пример:
 
@@ -14,7 +15,8 @@ let rabbit = new Rabbit("Rab");
 
 // метод hasOwnProperty от Object.prototype
 alert( rabbit.hasOwnProperty('name') ); // true
-Но что если мы явно напишем "class Rabbit extends Object" – тогда результат будет отличаться от обычного "class Rabbit"?
+Но что если мы явно напишем "class Rabbit extends Object" – 
+тогда результат будет отличаться от обычного "class Rabbit"?
 
 В чем разница?
 
@@ -31,4 +33,6 @@ let rabbit = new Rabbit("Кроль");
 alert( rabbit.hasOwnProperty('name') ); // Ошибка
 */
 
-//При явном наследованиии в функции конструкторе необходимо вызывать super()
+/*При явном наследованиии в функции конструкторе 
+наследуемого объекта необходимо вызывать super()
+*/
